@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:bugly_crash/bugly.dart';
@@ -42,13 +43,17 @@ class _MyAppState extends State<MyApp> {
     Bugly.setUserSceneTag(userSceneTag: 30);
     Bugly.putUserData(userKey:"userkey1",userValue:"uservalue1");
     Bugly.putUserData(userKey:"userkey2",userValue:"uservalue2");
-    BuglyLog.d(tag:"d",content:"value");
-    BuglyLog.i(tag:"i",content:"value");
-    BuglyLog.v(tag:"v",content:"value");
-    BuglyLog.w(tag:"w",content:"value");
-    BuglyLog.e(tag:"e",content:"value");
+    if (Platform.isAndroid) {
+      BuglyLog.d(tag:"d",content:"value");
+      BuglyLog.i(tag:"i",content:"value");
+      BuglyLog.v(tag:"v",content:"value");
+      BuglyLog.w(tag:"w",content:"value");
+      BuglyLog.e(tag:"e",content:"value");
+    }
+    
     Bugly.setIsDevelopmentDevice(isDevelopmentDevice: true);
-    Bugly.initCrashReport(appId:"d562178d23",isDebug: true);
+    String id = Platform.isAndroid ? "d562178d23" : "b1b49f0ce1";
+    Bugly.initCrashReport(appId:id,isDebug: true);
     initPlatformState();
   }
 
