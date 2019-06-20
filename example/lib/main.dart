@@ -39,7 +39,7 @@ class _MyAppState extends State<MyApp> {
     Bugly.setAppVersion(appVersion:"1.9.2");
     Bugly.setAppChannel(appChannel: "flutter_test");
     Bugly.setAppPackage(appPackage: "com.bugly.flutter.test");
-    Bugly.setUserId(userId: "9527");
+    Bugly.setUserId(userId: "9528");
     Bugly.setUserSceneTag(userSceneTag: 30);
     Bugly.putUserData(userKey:"userkey1",userValue:"uservalue1");
     Bugly.putUserData(userKey:"userkey2",userValue:"uservalue2");

@@ -36,7 +36,9 @@ android {
 
 dependencies {
     //compile 'com.tencent.bugly:crashreport:latest.release'
-    implementation  files('libs/bugly_crash_release.jar')
+    //implementation  files('libs/bugly_crash_release.jar')
+    implementation 'com.tencent.bugly:crashreport_upgrade:latest.release'//其中latest.release指代最新版本号，也可以指定明确的版本号，例如1.2.0
+    implementation 'com.tencent.bugly:nativecrashreport:latest.release' //其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.2.0
     implementation 'com.tencent.tinker:tinker-android-lib:1.9.13'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }
