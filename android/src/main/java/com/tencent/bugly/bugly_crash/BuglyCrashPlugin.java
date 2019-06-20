@@ -1,20 +1,19 @@
 package com.tencent.bugly.bugly_crash;
 
+import android.content.Context;
+import com.tencent.bugly.crashreport.BuglyLog;
+import com.tencent.bugly.crashreport.CrashReport;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
-import com.tencent.bugly.crashreport.CrashReport;
-import android.content.Context;
 import java.util.Map;
-import com.tencent.bugly.crashreport.BuglyLog;
 /**
  * Description:bugly oa futter plugin
  * @author rockypzhang
  * @since 2019/5/28
  */
-public class BuglyCrashPlugin implements MethodCallHandler {
+public class BuglyCrashPlugin implements MethodChannel.MethodCallHandler {
   /** Plugin registration. */
   private static Context mContext;
   public static void registerWith(Registrar registrar) {
@@ -103,6 +102,12 @@ public class BuglyCrashPlugin implements MethodCallHandler {
       }
       CrashReport.putUserData(mContext, userKey, userValue);
       BuglyCrashPluginLog.d("userKey:"+userKey+" userValue:"+userValue);
+    } else if (call.method.equals("setUserId")){
+      if (call.hasArgument("userId")) {
+        String userId = call.argument("userId");
+        CrashReport.setUserId(mContext, userId);
+        BuglyCrashPluginLog.d("userId:"+userId);
+      }
     }else if (call.method.contains("log")){
       buglyLog(call);
     }else if (call.method.contains("setIsDevelopmentDevice")){

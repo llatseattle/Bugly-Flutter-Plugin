@@ -6,3 +6,10 @@
 .DS_Store
 /build
 /captures
+.vscode/*
+
+example/build
+example/ios/Flutter/*.xcconofig
+
+pubspec.lock
+

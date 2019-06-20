@@ -110,6 +110,20 @@ class Bugly {
     _channel.invokeMethod("setUserSceneTag",map);
   }
 
+    /**
+   * 设置用户场景 ,可以在初始化前执行.
+   *
+   * @param setUserId 唯一标识一种场景，必须大于0
+   */
+  static Future<void> setUserId({
+    String  userId,
+  }) async{
+    Map<String, Object> map = {
+      "userId":userId,
+    };
+    _channel.invokeMethod("setUserId",map);
+  }
+
   /**
    * 添加用户数据Key，Value.
    *
